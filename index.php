@@ -107,6 +107,7 @@ function buildQuery($params = []) {
 
     <div class="mt-4 d-flex justify-content-between">
       <a href="admin.php" class="btn btn-outline-primary">➕ 添加新卡片</a>
+     <a href="register_email.php" class="btn btn-outline-primary">📧 登记邮箱</a>  <!--无需邮箱功能注释此行-->
       <a href="https://blog.bd8ftc.de" class="btn btn-outline-secondary">🏠 返回主站</a>
     </div>
   </main>

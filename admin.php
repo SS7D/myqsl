@@ -27,6 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['callsign']) && isset(
             $stmt->bind_param('ss', $date, $callsign);
             if ($stmt->execute()) {
                 $success = true;
+                require 'send_email.php';  // 你需要配置此文件，使用 PHPMailer 或类似库
+
+$stmt = $mysqli->prepare("SELECT email FROM callsign_emails WHERE callsign = ?");
+$stmt->bind_param("s", $callsign);
+$stmt->execute();
+$stmt->bind_result($email);
+if ($stmt->fetch()) {
+    send_thank_you_email($email, $callsign);
+}
+$stmt->close();
             } else {
                 $errorMsg = "数据库插入失败：" . $stmt->error;
             }
